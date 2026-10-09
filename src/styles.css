@@ -71,3 +71,52 @@
 .candle i{left:calc(50% - 1px);top:3px}
 .candle .flame{left:7px;top:-14px}
 .candle.lit{box-shadow:0 0 12px #ffe45e}
+
+
+/* Compact mobile arcade layout: keep the board and touch controls side-by-side. */
+@media (max-width: 600px) {
+  .arcade-shell { padding: 6px 8px 16px; }
+  .hero { padding: 12px 2px 8px; }
+  .hero .eyebrow { margin-bottom: 7px; }
+  .hero .subtitle { margin: 5px 0; font-size: 19px; }
+  .pacman-row { margin-top: 7px; }
+  .pacman { border-width: 10px; }
+  .dots { font-size: 20px; letter-spacing: 3px; }
+  .ghost { font-size: 21px; }
+  .game-panel { margin: 8px 0 14px; padding: 8px; }
+  .game-layout { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); align-items: start; gap: 8px; padding: 9px 0 3px; }
+  .screen-wrap { width: 100%; max-width: 220px; height: auto; aspect-ratio: 260 / 452; align-self: start; }
+  .stats { width: 100%; min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+  .stat, .mission { padding: 7px; }
+  .stat small, .mission > span { font-size: 7px; margin-bottom: 5px; }
+  .stat strong { font-size: clamp(10px, 3.3vw, 14px); }
+  .mission p { font-size: 17px; margin: 4px 0; }
+  .progress { height: 5px; }
+  .start-button { min-height: 39px; padding: 7px 4px; font-size: 7px; }
+  .controls { display: none; }
+  .stats .touch-controls { width: 100%; max-width: none; margin: 0; padding: 7px 5px; }
+  .touch-label { font-size: 7px; line-height: 1.5; margin-bottom: 6px; letter-spacing: 0; }
+  .touch-label span { display: none; }
+  .control-pad { gap: 5px; }
+  .control-button { min-height: 37px; padding: 4px 2px; font-size: 15px; border-width: 1px; border-bottom-width: 3px; box-shadow: 1px 1px 0 #07051a; }
+  .control-button span { font-size: 6px; line-height: 1.4; margin-top: 2px; }
+  .rotate-button, .hard-drop-button { grid-column: 1 / -1; }
+  .touch-note { font-size: 13px; line-height: 1.05; margin: 6px 0 0; }
+  .hint { font-size: 16px; line-height: 1.15; margin: 6px 0 0; }
+  .panel-heading { padding-bottom: 8px; }
+  .cake-panel { margin-top: 10px; padding: 9px; }
+}
+@media (max-width: 380px) {
+  .game-layout { grid-template-columns: minmax(0, 1fr) minmax(0, .92fr); gap: 6px; }
+  .screen-wrap { width: 100%; }
+  .stats { gap: 5px; }
+  .stat, .mission { padding: 5px; }
+  .stat small, .mission > span { font-size: 6px; }
+  .stat strong { font-size: 10px; }
+  .mission p { font-size: 15px; }
+  .stats .touch-controls { padding: 6px 4px; }
+  .control-pad { gap: 4px; }
+  .control-button { min-height: 33px; font-size: 13px; }
+  .control-button span { font-size: 5px; }
+  .touch-note { font-size: 12px; }
+}
