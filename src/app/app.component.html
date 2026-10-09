@@ -5,18 +5,20 @@
     <div class="panel-heading"><span class="status-dot"></span> TETRIS.EXE <span class="mini-label">LEVEL: BIRTHDAY</span></div>
     <div class="game-layout">
       <div class="screen-wrap"><canvas #boardCanvas width="260" height="452" aria-label="Tetris game board"></canvas><div class="screen-overlay" *ngIf="!started"><div class="big-play">▶</div><p>READY PLAYER ONE?</p><small>Clear one horizontal line to unlock the cake!</small></div><div class="screen-overlay win-overlay" *ngIf="unlocked"><div class="big-play">★</div><p>LINE CLEAR!</p><small>CAKE UNLOCKED</small></div><div class="screen-overlay" *ngIf="gameOver && !unlocked"><div class="big-play">×</div><p>GAME OVER</p><small>One more try?</small></div></div>
-      <aside class="stats"><div class="stat"><small>SCORE</small><strong>{{ score.toString().padStart(4, '0') }}</strong></div><div class="stat"><small>LINES</small><strong>{{ lines.toString().padStart(2, '0') }}</strong></div><div class="mission"><span>MISSION</span><p>{{ unlocked ? '✓ Line cleared!' : 'Clear 1 line' }}</p><div class="progress"><i [style.width.%]="unlocked ? 100 : 0"></i></div></div><button class="pixel-button start-button" (click)="startGame()">{{ started && !gameOver && !unlocked ? 'RESTART' : '▶ PLAY GAME' }}</button><p class="controls"><b>CONTROLS</b><br>← → MOVE<br>↑ ROTATE<br>↓ DROP<br>SPACE HARD DROP</p>
-      <section class="touch-controls" aria-label="On-screen game controls">
-      <p class="touch-label">TAP CONTROLS <span>— PHONE FRIENDLY</span></p>
-      <div class="control-pad">
-        <button type="button" class="control-button rotate-button" (click)="handleControl('rotate')" [disabled]="!canControl" aria-label="Rotate piece">↻ <span>ROTATE</span></button>
-        <button type="button" class="control-button control-left" (click)="handleControl('left')" [disabled]="!canControl" aria-label="Move piece left">◀ <span>LEFT</span></button>
-        <button type="button" class="control-button control-down" (click)="handleControl('down')" [disabled]="!canControl" aria-label="Move piece down one row">▼ <span>DOWN</span></button>
-        <button type="button" class="control-button control-right" (click)="handleControl('right')" [disabled]="!canControl" aria-label="Move piece right">▶ <span>RIGHT</span></button>
-        <button type="button" class="control-button hard-drop-button" (click)="handleControl('drop')" [disabled]="!canControl" aria-label="Drop piece to the bottom">⬇ <span>DROP PIECE</span></button>
-      </div>
-      <p class="touch-note">Tap a button once per move. You can also use your keyboard on a computer.</p>
-      </section>
+      <aside class="stats">
+        <div class="mission"><span>YOUR MISSION</span><p>{{ unlocked ? '✓ Line cleared!' : 'Clear 1 line to unlock the cake' }}</p><div class="progress"><i [style.width.%]="unlocked ? 100 : 0"></i></div></div>
+        <button class="pixel-button start-button" (click)="startGame()">{{ started && !gameOver && !unlocked ? 'RESTART GAME' : '▶ PLAY GAME' }}</button>
+        <p class="controls"><b>HOW TO PLAY</b><br>Move blocks to complete one full row. Clear a line to unlock the birthday cake.</p>
+        <section class="touch-controls" aria-label="On-screen game controls">
+          <p class="touch-label">TOUCH CONTROLS</p>
+          <div class="control-pad">
+            <button type="button" class="control-button rotate-button" (click)="handleControl('rotate')" [disabled]="!canControl" aria-label="Rotate piece">↻ <span>ROTATE</span></button>
+            <button type="button" class="control-button control-left" (click)="handleControl('left')" [disabled]="!canControl" aria-label="Move piece left">◀ <span>LEFT</span></button>
+            <button type="button" class="control-button control-down" (click)="handleControl('down')" [disabled]="!canControl" aria-label="Move piece down one row">▼ <span>DOWN</span></button>
+            <button type="button" class="control-button control-right" (click)="handleControl('right')" [disabled]="!canControl" aria-label="Move piece right">▶ <span>RIGHT</span></button>
+            <button type="button" class="control-button hard-drop-button" (click)="handleControl('drop')" [disabled]="!canControl" aria-label="Drop piece to the bottom">⬇ <span>DROP</span></button>
+          </div>
+        </section>
       </aside>
     </div>
     <p class="hint" *ngIf="!unlocked">Line up the blocks. Complete one row and the birthday magic begins.</p>

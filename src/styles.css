@@ -158,3 +158,31 @@
   .control-button { min-height: 31px; font-size: 12px; }
   .touch-note { font-size: 10px; }
 }
+
+
+/* Simplified mobile-first HUD: no score/line counters; compact single-row controls. */
+.stat { display: none !important; }
+@media (max-width: 600px) {
+  .game-layout { display: grid !important; grid-template-columns: minmax(0, .78fr) minmax(0, 1.22fr); align-items: start; gap: 8px; }
+  .screen-wrap { width: 100% !important; height: auto !important; aspect-ratio: 260 / 452; }
+  .stats { display: flex !important; flex-direction: column; gap: 7px; min-width: 0; }
+  .mission { padding: 7px; }
+  .mission p { font-size: 13px; line-height: 1.25; }
+  .controls { display: block !important; font-size: 14px; line-height: 1.2; margin: 0; }
+  .controls b { font-size: 7px; }
+  .stats .touch-controls { width: 100%; max-width: none; margin: 0; padding: 6px 4px; }
+  .touch-label { font-size: 6px; margin: 0 0 5px; line-height: 1.4; }
+  .control-pad { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 3px; }
+  .control-button, .rotate-button, .hard-drop-button { grid-column: auto !important; min-width: 0; min-height: 43px; padding: 4px 1px; font-size: 13px; border: 1px solid #6753a5; border-bottom-width: 3px; box-shadow: 1px 1px 0 #07051a; }
+  .control-button span { font-size: clamp(4px, 1.35vw, 6px); line-height: 1.2; margin-top: 3px; overflow-wrap: anywhere; }
+  .touch-note { display: none; }
+  .start-button { min-height: 35px; font-size: 7px; padding: 6px 3px; }
+  .hint { font-size: 14px; line-height: 1.2; }
+}
+@media (max-width: 380px) {
+  .game-layout { grid-template-columns: minmax(0, .72fr) minmax(0, 1.28fr); gap: 6px; }
+  .control-pad { gap: 2px; }
+  .control-button, .rotate-button, .hard-drop-button { min-height: 39px; font-size: 11px; }
+  .control-button span { font-size: 4px; }
+  .mission p { font-size: 12px; }
+}
