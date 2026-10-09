@@ -1,0 +1,31 @@
+<main class="arcade-shell">
+  <header class="topbar"><div class="pixel-mark">★</div><span>INSERT COIN <b>✦</b> PRESS START</span><div class="life">♥ ♥ ♥</div></header>
+  <section class="hero"><p class="eyebrow"></p><h1>HAPPY <span>BIRTHDAY VAIB</span>HAVI</h1><p class="subtitle">A mini game just to celebrate you <3</p><div class="pacman-row" aria-hidden="true"><span class="pacman"></span><span class="dots">· · · · · · · · ·</span><span class="ghost">👾</span></div></section>
+  <section class="game-panel">
+    <div class="panel-heading"><span class="status-dot"></span> TETRIS.EXE <span class="mini-label">LEVEL: BIRTHDAY</span></div>
+    <div class="game-layout">
+      <div class="screen-wrap"><canvas #boardCanvas width="260" height="452" aria-label="Tetris game board"></canvas><div class="screen-overlay" *ngIf="!started"><div class="big-play">▶</div><p>READY PLAYER ONE?</p><small>Clear one horizontal line to unlock the cake!</small></div><div class="screen-overlay win-overlay" *ngIf="unlocked"><div class="big-play">★</div><p>LINE CLEAR!</p><small>CAKE UNLOCKED</small></div><div class="screen-overlay" *ngIf="gameOver && !unlocked"><div class="big-play">×</div><p>GAME OVER</p><small>One more try?</small></div></div>
+      <aside class="stats"><div class="stat"><small>SCORE</small><strong>{{ score.toString().padStart(4, '0') }}</strong></div><div class="stat"><small>LINES</small><strong>{{ lines.toString().padStart(2, '0') }}</strong></div><div class="mission"><span>MISSION</span><p>{{ unlocked ? '✓ Line cleared!' : 'Clear 1 line' }}</p><div class="progress"><i [style.width.%]="unlocked ? 100 : 0"></i></div></div><button class="pixel-button start-button" (click)="startGame()">{{ started && !gameOver && !unlocked ? 'RESTART' : '▶ PLAY GAME' }}</button><p class="controls"><b>CONTROLS</b><br>← → MOVE<br>↑ ROTATE<br>↓ DROP<br>SPACE HARD DROP</p></aside>
+    </div>
+    <section class="touch-controls" aria-label="On-screen game controls">
+      <p class="touch-label">TAP CONTROLS <span>— PHONE FRIENDLY</span></p>
+      <div class="control-pad">
+        <button type="button" class="control-button rotate-button" (click)="handleControl('rotate')" [disabled]="!canControl" aria-label="Rotate piece">↻ <span>ROTATE</span></button>
+        <button type="button" class="control-button control-left" (click)="handleControl('left')" [disabled]="!canControl" aria-label="Move piece left">◀ <span>LEFT</span></button>
+        <button type="button" class="control-button control-down" (click)="handleControl('down')" [disabled]="!canControl" aria-label="Move piece down one row">▼ <span>DOWN</span></button>
+        <button type="button" class="control-button control-right" (click)="handleControl('right')" [disabled]="!canControl" aria-label="Move piece right">▶ <span>RIGHT</span></button>
+        <button type="button" class="control-button hard-drop-button" (click)="handleControl('drop')" [disabled]="!canControl" aria-label="Drop piece to the bottom">⬇ <span>DROP PIECE</span></button>
+      </div>
+      <p class="touch-note">Tap a button once per move. You can also use your keyboard on a computer.</p>
+    </section>
+    <p class="hint" *ngIf="!unlocked">Line up the blocks. Complete one row and the birthday magic begins.</p>
+    <p class="hint success" *ngIf="unlocked">MISSION COMPLETE! Your birthday cake is ready. ✨</p>
+  </section>
+  <section class="cake-panel" [class.locked]="!unlocked">
+    <div class="panel-heading"><span class="status-dot pink"></span> CAKE.exe <span class="mini-label">{{ unlocked ? 'SYSTEM UNLOCKED' : 'LOCKED — CLEAR A LINE' }}</span></div>
+    <div class="cake-stage"><div class="cake-spark spark-one">✦</div><div class="cake-spark spark-two">✧</div><div class="cake"><div class="candles"><button *ngFor="let lit of candles; let i = index" class="candle" [class.lit]="lit" [disabled]="!unlocked || lit" (click)="lightCandle(i)" [attr.aria-label]="'Light candle ' + (i + 1)"><span class="flame" *ngIf="lit">✦</span><i></i></button></div><div class="frosting"><span>HBD!</span></div><div class="cake-body"><span>♥</span><span>★</span><span>♥</span></div><div class="cake-base"></div></div><div class="plate"></div></div>
+    <p class="cake-instruction" *ngIf="!unlocked">Beat the level to reveal your cake.</p><p class="cake-instruction" *ngIf="unlocked && !showWish">Click each of the 3 candles to light the crackers! ({{ litCount }}/3)</p>
+    <div class="wish-card" *ngIf="showWish"><div class="confetti">✦ ✧ ★ ✦ ✧</div><p class="eyebrow">QUEST COMPLETE</p><h2>HAPPY BIRTHDAY!</h2><p>Hope your day is full of lovely time with your family, large laughs, and all the love and appreciation you deserve. Thank you for existing, Vaibhavi! You are best sister anyone can ever ask for! </p><div class="pixel-heart">♥ ♥ ♥</div><button class="pixel-button" (click)="resetCandles()">PLAY THE FINALE AGAIN</button></div>
+  </section>
+  <footer>MADE WITH <span>♥</span> AND A LITTLE PIXEL MAGIC <small>© BIRTHDAY ARCADE</small></footer>
+</main>
