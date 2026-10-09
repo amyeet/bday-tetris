@@ -120,3 +120,41 @@
   .control-button span { font-size: 5px; }
   .touch-note { font-size: 12px; }
 }
+
+/* Final mobile fix: keep the board, score and touch controls in one compact row. */
+@media (max-width: 600px) {
+  .arcade-shell { max-width: 100%; padding: 5px 7px 14px; }
+  .hero { padding: 8px 0 6px; }
+  .hero .eyebrow { margin: 0 0 4px; font-size: 8px; }
+  h1 { font-size: clamp(18px, 5vw, 25px); line-height: 1.3; }
+  .hero .subtitle { font-size: 16px; margin: 3px 0; }
+  .pacman-row { margin-top: 4px; }
+  .game-panel { margin: 6px 0 12px; padding: 7px; }
+  .game-layout { display: grid !important; grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr); align-items: start; gap: 7px; padding: 7px 0 2px; }
+  .screen-wrap { width: 100% !important; max-width: none; height: auto !important; aspect-ratio: 260 / 452; }
+  .stats { width: 100% !important; min-width: 0; display: flex; flex-direction: column; gap: 5px; }
+  .stat, .mission { padding: 5px; }
+  .stat small, .mission > span { font-size: 6px; margin: 0 0 4px; }
+  .stat strong { font-size: clamp(9px, 2.7vw, 12px); }
+  .mission p { font-size: 14px; line-height: 1.2; margin: 3px 0; }
+  .progress { height: 4px; }
+  .start-button { min-height: 32px; padding: 5px 2px; font-size: 6px; line-height: 1.4; }
+  .controls { display: none !important; }
+  .stats .touch-controls { display: block; width: 100%; max-width: none; margin: 0; padding: 5px 4px; }
+  .touch-label { font-size: 6px; line-height: 1.5; margin: 0 0 4px; letter-spacing: 0; }
+  .touch-label span { display: none; }
+  .control-pad { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; }
+  .control-button { min-width: 0; min-height: 34px; padding: 3px 1px; font-size: 13px; border-width: 1px; border-bottom-width: 3px; box-shadow: 1px 1px 0 #07051a; }
+  .control-button span { font-size: clamp(5px, 1.5vw, 7px); line-height: 1.3; margin-top: 2px; }
+  .rotate-button, .hard-drop-button { grid-column: 1 / -1; }
+  .touch-note { font-size: 11px; line-height: 1.05; margin: 5px 0 0; }
+  .hint { font-size: 14px; line-height: 1.15; margin: 5px 0 0; }
+  .panel-heading { padding-bottom: 6px; }
+}
+@media (max-width: 380px) {
+  .game-layout { grid-template-columns: minmax(0, .78fr) minmax(0, 1.22fr); gap: 5px; }
+  .stats { gap: 4px; }
+  .stat, .mission { padding: 4px; }
+  .control-button { min-height: 31px; font-size: 12px; }
+  .touch-note { font-size: 10px; }
+}
